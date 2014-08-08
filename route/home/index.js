@@ -1,9 +1,20 @@
 var route = require('express').Router()
-var Docker = require('dockerode')
-var docker = new Docker({host: 'http://10.0.13.56', port: 2375});
+var imageList = require('./image-list')
 
-route.get('/', function (req, res) {
-    res.render('index')
+route.get(/^\/(docker\/(.+)?)?/, function (req, res) {
+    res.render('index', {imageList: imageList})
 })
+
+//启动容器
+route.get(/\/create\/(.+)?/, function (req, res) {
+    if (!imageList[req.params[0]]) {
+        res.end('没有相关的镜像')
+        return
+    }
+    var container = imageList[req.params[0]]
+    //将
+    res.json(container)
+})
+
 
 module.exports = route

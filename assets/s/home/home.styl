@@ -1,0 +1,120 @@
+#nav
+  position absolute
+  left 0
+  top 50%
+  right 0
+  bottom 0
+  z-index: 1;
+  text-align center
+  margin-top -155px
+  display none
+
+#nav a
+  display inline-block
+  height 280px
+  width 20%
+  border solid 1px #333
+  line-height 120px
+  margin 0 1em
+  border-radius 5px
+  color #000
+  text-decoration none
+  font-size 24px
+
+#nav a.create
+  background #fff url(http://s6.mogucdn.com/pic/140808/20140808100100873_ieydsnzygu4wcyjymiytambqgqyde_172x127.png) center 80% no-repeat
+
+#nav a.dashboard
+  background #fff url(http://s6.mogucdn.com/pic/140808/20140808100533646_ieydayrzgnsgcyjymiytambqgyyde_128x128.png) center 80% no-repeat
+
+#nav a:hover
+  box-shadow inset 0 0 233px rgba(0, 0, 0, .4)
+
+//create
+#create
+  position absolute
+  left 0
+  top 0
+  right 0
+  bottom 0
+  background #fff
+  z-index: 2;
+  padding 5em
+  overflow auto
+  display none
+
+#create h1
+  font-size 28px
+  margin-bottom 1em
+
+#create .image-list
+  text-align center
+
+#create .image-list a
+  display inline-block
+  width 180px
+  height 200px
+  border solid 1px #aaa
+  border-radius 5px
+  margin-right 1.5em
+  margin-bottom 1.5em
+  position relative
+  overflow hidden
+  color #000
+  transition all 0.3s ease
+
+#create .image-list a.close
+  width 0
+  margin-right 0
+  border-width 0
+
+#create .image-list a b
+  position absolute
+  left 0
+  bottom 1.5em
+  right 0
+  text-align center
+  font-size 22px
+
+#create .image-list a:after
+  content ''
+  position absolute
+  left 50%
+  top 22px
+  margin-left -50px
+  width 100px
+  height 100px
+  background-position center 20%
+  background-repeat no-repeat
+  background-size 100% auto
+
+centos-bg = "http://s7.mogucdn.com/pic/140808/20140808101346690_ieygizbsmm2weyjymiytambqhayde_128x128.png"
+ubuntu-bg = "http://s7.mogucdn.com/pic/140808/20140808101337768_ieydimjsmm2weyjymiytambqgyyde_72x72.png"
+redis-bg = "http://s6.mogucdn.com/pic/140808/20140808101439704_ieydsnrumm2weyjymiytambqgiyde_128x128.png"
+mysql-bg = "http://s6.mogucdn.com/pic/140808/20140808101410381_ieydcyztmm2weyjymiytambqgiyde_128x128.png"
+mongodb-bg = "http://s8.mogucdn.com/pic/140808/2014080810142077_ieygmmzrmm2weyjymiytambqhayde_128x128.png"
+
+#create a[href*=centos]:after
+  background-image url(centos-bg)
+
+#create a[href*=ubuntu]:after
+  background-image url(ubuntu-bg)
+
+#create a[href*=redis]:after
+  background-image url(redis-bg)
+
+#create a[href*=mysql]:after
+  background-image url(mysql-bg)
+
+#create a[href*=mongodb]:after
+  background-image url(mongodb-bg)
+
+//启动服务器
+#run
+  position absolute
+  left 0
+  top 0
+  right 0
+  bottom 0
+  background #fff
+  display none
