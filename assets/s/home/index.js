@@ -6,10 +6,15 @@ var dockerApp = angular.module('dockerApp', ['ngRoute'])
                     controller: 'homeCtrl',
                     controllerAs: 'home'
                 })
-                .when('/create/:name?', {
+                .when('/create', {
                     templateUrl: '/create.html',
                     controller: 'createCtrl',
                     controllerAs: 'create'
+                })
+                .when('/create/:name', {
+                    templateUrl: '/config.html',
+                    controller: 'configCtrl',
+                    controllerAs: 'config'
                 })
             // configure html5 to get links working on jsfiddle
             $locationProvider.html5Mode(true);
@@ -17,20 +22,27 @@ var dockerApp = angular.module('dockerApp', ['ngRoute'])
     .controller('homeCtrl', ['$scope', '$route', '$routeParams', '$location', function ($scope, $route, $routeParams, $location) {
         $scope.$on('$routeChangeSuccess', function () {
             $('#nav').show()
+            $('#create').hide()
         })
     }])
     .controller('createCtrl', function ($scope, $routeParams, $location) {
-        $('#nav').hide()
-        $('#create').show()
-        $('#create').on('click', 'a[type]', function (ev) {
-            var $a = $(ev.currentTarget)
-            var $all = $(ev.currentTarget).siblings('a')
-            $a.removeClass('close')
-            $all.addClass('close')
-            $a.css({border: "solid 5px red"})
+        var self = this
+        $scope.$on('$routeChangeSuccess', function () {
+            $('#nav').hide()
+            $('#create').show()
         })
+
     })
-    .controller('ChapterCtrl', ['$routeParams', function ($routeParams) {
-        this.name = "ChapterCtrl";
-        this.params = $routeParams;
-    }]);
+    .controller('configCtrl', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http) {
+        var self = this
+        var name = $routeParams.name
+        self.title = name
+        $scope.run = function () {
+            $http.post('/run', {
+                name: name,
+                _csrf: csrfToken
+            }).success(function (data, status, headers) {
+                console.log(data, status, headers)
+            })
+        }
+    }])

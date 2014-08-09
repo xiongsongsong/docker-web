@@ -5,6 +5,7 @@ block js
     script(src="/lib/angular-route.min.js")
     script(src="/s/home/index.js")
     script.
+        var csrfToken='!{csrfToken}'
         dockerApp.run(function($rootScope){
             $rootScope.imageList=!{JSON.stringify(imageList)}
         })
@@ -22,4 +23,5 @@ block body
                 .image-list
                     a(ng-repeat="(key,image) in imageList",type="{{key}}",href="/create/{{key}}")
                         b(ng-bind="image.title")
+                a.btn(href='/') &lt;&lt; 返回主页
             div(ng-view)
