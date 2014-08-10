@@ -10,7 +10,7 @@ manager.include(2999, 4001)
     .claim('http4')
 
 manager.on('claim', function (service) {
-
+    console.log(service.name, service.port)
 })
 
 route.get(/\/create\/(.+)?/, function (req, res) {

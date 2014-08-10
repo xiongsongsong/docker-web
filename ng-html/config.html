@@ -1,5 +1,7 @@
 <div id="config">
     <h1>创建 <span ng-bind="config.title"></span></h1>
-    <p><a class="btn" ng-click="run()">启动</a></p>
-    <p><a href="/create">返回镜像列表</a></p>
+
+    <p ng-show="config.info" ng-bind="config.info"></p>
+
+    <p><a class="btn" href="/create">返回镜像列表</a> <a class="btn" ng-click="run()">启动</a></p>
 </div>

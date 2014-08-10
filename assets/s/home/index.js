@@ -37,11 +37,16 @@ var dockerApp = angular.module('dockerApp', ['ngRoute'])
         var self = this
         var name = $routeParams.name
         self.title = name
+
         $scope.run = function () {
+            self.info = '启动中'
+
             $http.post('/run', {
                 name: name,
                 _csrf: csrfToken
             }).success(function (data, status, headers) {
+                self.info = '启动完成'
+                $scope.$apply()
                 console.log(data, status, headers)
             })
         }
